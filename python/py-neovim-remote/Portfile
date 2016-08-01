@@ -1,0 +1,41 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+PortGroup           github 1.0
+PortGroup           select 1.0
+
+name                py-neovim-remote
+version             1.2.2
+categories-append   editors
+platforms           darwin
+license             MIT
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         Neovim support for --remote and friends
+long_description    ${description}
+github.setup        mhinz neovim-remote ${version} v
+
+checksums           sha256 f3eb390cf4b9aa7bcd7b929dfd226b3b73cb338703d54e8e87f74686224f70d6
+
+python.versions     34 35
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    depends_lib             port:nvr_select \
+                            port:neovim \
+                            port:py${python.version}-neovim
+
+    select.entries          [list nvr nvr${python.version}]
+
+    post-destroot {
+        if {${python.version} == ${python.default_version}} {
+            ln -s ${python.prefix}/bin/nvr ${destroot}${prefix}/bin/
+        }
+    }
+
+    notes-append "
+        sudo port select --set nvr nvr${python.version}
+    "
+}

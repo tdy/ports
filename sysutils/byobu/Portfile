@@ -1,0 +1,29 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+
+name                byobu
+version             5.109
+categories          sysutils
+platforms           darwin
+license             GPL-3
+maintainers         gmx.com:tdy
+description         A light, powerful, text-based window manager based on GNU Screen
+long_description    ${description}. Quickly create and move between different windows over a single SSH connection or TTY terminal, monitor dozens of important statistics about your system, detach and reattach to sessions later while your programs continue to run in the background.
+homepage            http://byobo.co/
+master_sites        https://launchpad.net/byobu/trunk/${version}/+download/
+distname            ${name}_${version}.orig
+worksrcdir          ${name}-${version}
+
+checksums           sha256 e795cbec6e9399d482b452b57582a993ff7bd62655b9889072cb5c4ab223fb12
+
+variant screen description {screen backend} {
+    depends_lib-append  port:screen
+}
+
+variant tmux description {tmux backend} {
+    depends_lib-append  port:tmux
+}
+
+default_variants    +tmux

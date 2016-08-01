@@ -1,0 +1,29 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+PortGroup           github 1.0
+
+name                py-neovim
+version             0.1.9
+categories-append   editors
+platforms           darwin
+license             Apache-2
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         Python client for Neovim
+long_description    ${description} implementing support for Python plugins in Neovim. Also works as a library for connecting to and scripting Neovim processes through its msgpack-rpc API.
+github.setup        neovim python-client ${version}
+
+checksums           sha256 25105ffbc4943f2d726a6776f417d9278853810ad53badd630278b18462f5948
+
+python.versions     27 34
+
+if {${name} ne ${subport}} {
+    depends_build-append    port:py${python.version}-setuptools
+    depends_lib-append      port:neovim \
+                            port:py${python.version}-msgpack \
+                            port:py${python.version}-trollius \
+                            port:py${python.version}-greenlet
+}
