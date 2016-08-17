@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-typing
+python.rootname     typing
+version             3.5.2.2
+categories-append   devel
+platforms           darwin
+license             PSF
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         Defines a standard notation for Python function and variable type annotations
+long_description    ${description}
+homepage            https://pypi.python.org/pypi/typing
+master_sites        pypi:typing/${python.rootname}/
+distname            ${python.rootname}-${version}
+
+checksums           sha256 2bce34292653af712963c877f3085250a336738e64f99048d1b8509bebc4772f
+
+python.versions     27 32 33 34
+
+if {${name} ne ${subport}} {}

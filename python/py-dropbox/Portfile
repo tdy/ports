@@ -1,0 +1,35 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-dropbox
+python.rootname     dropbox
+version             6.7.0
+categories-append   net sysutils
+platforms           darwin
+license             Dropbox
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         Dropbox API client for Python
+long_description    ${description}
+homepage            https://pypi.python.org/pypi/dropbox
+master_sites        pypi:d/${python.rootname}/
+distname            ${python.rootname}-${version}
+
+checksums           sha256 2fda43352ab7c2c946d2e32c3f114aeacbeabac989208398115bf6870e658444
+
+python.versions     26 27 34 35
+
+if {${name} ne ${subport}} {
+    depends_lib     port:py${python.version}-typing \
+                    port:py${python.version}-six \
+                    port:py${python.version}-requests \
+                    port:py${python.version}-urllib3
+
+    post-destroot {
+        xinstall -m 644 -W ${worksrcpath} LICENSE README.rst \
+            ${destroot}${prefix}/share/doc/${subport}
+    }
+}

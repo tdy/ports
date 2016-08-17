@@ -1,0 +1,31 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-urllib3
+python.rootname     urllib3
+version             1.16
+categories-append   sysutils
+platforms           darwin
+license             MIT
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         HTTP library with thread-safe connection pooling, file post, and more
+long_description    ${description}
+homepage            https://pypi.python.org/pypi/urllib3
+master_sites        pypi:u/${python.rootname}/
+distname            ${python.rootname}-${version}
+
+checksums           sha256 63d479478ddfc83bbc11577dc16d47835c5179ac13e550118ca143b62c4bf9ab
+
+python.versions     26 27 33 34 35
+
+if {${name} ne ${subport}} {
+    depends_lib     port:py${python.version}-certifi \
+                    port:py${python.version}-openssl \
+                    port:py${python.version}-socks \
+                    port:py${python.version}-asn1 \
+                    port:py${python.version}-ndg-httpsclient
+}

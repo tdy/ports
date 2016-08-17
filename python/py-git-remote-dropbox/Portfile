@@ -1,0 +1,42 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+PortGroup           github 1.0
+PortGroup           select 1.0
+
+name                py-git-remote-dropbox
+version             0.2.2
+categories-append   net sysutils
+platforms           darwin
+license             MIT
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         A transparent bridge between Git and Dropbox
+long_description    ${description}. Use a Dropbox (shared) folder as a Git remote.
+homepage            https://github.com/anishathalye/git-remote-dropbox
+github.setup        anishathalye git-remote-dropbox ${version} v
+
+checksums           sha256 ab51500d5aa77dfc956903ebb438e9c3b237158329402bb56c5e60c197401cc6
+
+python.versions     27 34 35
+
+depends_lib         port:git-remote-dropbox_select \
+                    port:git
+
+if {${name} ne ${subport}} {
+    depends_lib     port:py${python.version}-dropbox
+
+    select.entries  [list git-remote-dropbox git-remote-dropbox${python.version}]
+
+    post-destroot {
+        if {${python.version} == ${python.default_version}} {
+            ln -s ${python.prefix}/bin/git-remote-dropbox ${destroot}${prefix}/bin/
+        }
+    }
+
+    notes-append "
+        sudo port select --set git-remote-dropbox git-remote-dropbox${python.version}
+    "
+}
