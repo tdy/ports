@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py27-commando
+python.rootname     commando
+version             1.0.0
+categories-append   devel sysutils
+platforms           darwin
+license             MIT
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         A declarative interface to argparse and extras
+long_description    ${description}
+
+homepage            https://pypi.python.org/pypi/commando
+master_sites        pypi:c/${python.rootname}
+distname            ${python.rootname}-${version}
+
+python.versions     27
+
+checksums           rmd160 97df42f8eae546d9bb2c9e55ae5844f0e0cb0da2 \
+                    sha256 3cc802fc8c13d562d9de3ad9246da3f5931cc99c07cc9cc8a70cd0a816f75682

@@ -1,0 +1,44 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py27-hyde
+python.rootname     hyde
+version             0.8.9
+categories-append   www net
+platforms           darwin
+license             MIT
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         A static website generator
+long_description    ${description}
+
+homepage            http://hyde.github.io/
+master_sites        pypi:h/${python.rootname}
+distname            ${python.rootname}-${version}
+
+python.versions     27
+
+checksums           rmd160 87985ec48aedfa4d777b7e856024388bcb663d1f \
+                    sha256 5d471e34f92396afccafa1ffa85cc632ac45777b0dac9eaeef9a6bb2ce7114b6
+
+depends_build-append    port:py27-setuptools
+
+depends_lib         port:py27-smartypants \
+                    port:py27-typogrify \
+                    port:py27-markdown \
+                    port:py27-yaml \
+                    port:py27-commando \
+                    port:py27-fswrap
+
+variant jinja2 description {template} {
+    depends_lib-append  port:py27-jinja2
+}
+
+variant pygments description {syntax coloring} {
+    depends_lib-append  port:py27-pygments
+}
+
+default_variants +jinja2 +pygments

@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py27-smartypants
+python.rootname     smartypants
+version             1.8.6
+categories-append   www
+platforms           darwin
+license             BSD
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         A web publishing plug-in for Movable Type, Blosxom, and BBEdit
+long_description    ${description}
+
+homepage            https://pypi.python.org/pypi/smartypants/
+master_sites        pypi:s/${python.rootname}
+distname            ${python.rootname}-${version}
+
+python.versions     27
+
+checksums           rmd160 4634aeb36cb20b7fb3afa4b94c0b97f66397e001 \
+                    sha256 dcc206478e633b03e9abfeb7512a0acf90191cb4b38d251e05468ef063386512

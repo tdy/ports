@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py27-fswrap
+python.rootname     fswrap
+version             1.0.0
+categories-append   devel sysutils
+platforms           darwin
+license             MIT
+supported_archs     noarch
+maintainers         gmx.com:tdy
+description         An opinionated wrapper on file system and path functions
+long_description    ${description}
+
+homepage            https://pypi.python.org/pypi/fswrap
+master_sites        pypi:f/${python.rootname}
+distname            ${python.rootname}-${version}
+
+python.versions     27
+
+checksums           rmd160 f7976b030f2b77974e70b1703259a86c5741b403 \
+                    sha256 818e759313a5e4da5deaafd4fb73e3ef836e9dada9ece7fb837412a7f9d79ab5
