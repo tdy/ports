@@ -1,0 +1,16 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           haskell 1.0
+
+haskell.setup       split 0.2.3
+revision            1
+platforms           darwin
+license             BSD
+maintainers         gmx.com:tdy
+description         Haskell split methods
+long_description    ${description}
+
+checksums           rmd160  07ecb46e17402354b59df4c0dd27e1d1d3215314 \
+                    sha256  a6d100e433fa27eda72127475ba9c55481ca4105cfbb6ff55b67023d00ccead9

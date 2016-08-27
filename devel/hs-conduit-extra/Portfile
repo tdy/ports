@@ -1,0 +1,27 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           haskell 1.0
+
+haskell.setup       conduit-extra 1.1.9.2
+revision            1
+platforms           darwin
+license             MIT
+maintainers         gmx.com:tdy
+description         Additional hs-conduit common low-level operations
+long_description    ${description}
+
+checksums           rmd160  ebcee2c7e3c53d0f7ea070cb99be51736cfb41bc \
+                    sha256  9a7b3f44990014082f589dd91f70d8b5faef66e720677888a54fb2e463940a9f
+
+depends_lib-append  port:hs-attoparsec \
+                    port:hs-blaze-builder \
+                    port:hs-conduit \
+                    port:hs-monad-control \
+                    port:hs-network \
+                    port:hs-primitive \
+                    port:hs-resourcet \
+                    port:hs-stm \
+                    port:hs-streaming-commons \
+                    port:hs-zlib

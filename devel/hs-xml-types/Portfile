@@ -1,0 +1,18 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           haskell 1.0
+
+haskell.setup       xml-types 0.3.6
+revision            1
+platforms           darwin
+license             MIT
+maintainers         gmx.com:tdy
+description         Basic types for representing XML
+long_description    ${description}
+
+checksums           rmd160  1a2cbe7669baaccc6cd1821f4e358212d23a7e00 \
+                    sha256  9937d440072552c03c6d8ad79f61e61467dc28dcd5adeaad81038b9b94eef8c9
+
+depends_lib-append  port:hs-text

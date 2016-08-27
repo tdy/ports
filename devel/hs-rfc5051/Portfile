@@ -1,0 +1,16 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           haskell 1.0
+
+haskell.setup       rfc5051 0.1.0.3
+revision            1
+platforms           darwin
+license             BSD
+maintainers         gmx.com:tdy
+description         Simple unicode collation, RFC5051
+long_description    ${description}
+
+checksums           rmd160  c57c90d2781058846a64363eeadfc918dc0c8fd1 \
+                    sha256  e38dab28a5625774be60545c8c99e647b79bbc0ac0bc9c65fe6b2ebef160642b
